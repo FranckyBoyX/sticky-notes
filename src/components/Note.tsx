@@ -19,13 +19,8 @@ export function Note({
 	onDragStart,
 	onDragEnd,
 }: NoteProps) {
-	const handlePointerDown = () => {
-		dispatch({ type: "BRING_TO_FRONT", id: note.id });
-	};
-
 	return (
 		<div
-			onPointerDown={handlePointerDown}
 			style={{
 				position: "absolute",
 				left: note.x,

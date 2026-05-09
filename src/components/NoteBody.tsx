@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import type React from "react";
 import type { NoteAction } from "../types";
 
@@ -8,6 +9,17 @@ interface NoteBodyProps {
 }
 
 export function NoteBody({ noteId, text, dispatch }: NoteBodyProps) {
+	const divRef = useRef<HTMLDivElement>(null);
+
+	// Set initial content on mount only — do NOT sync on text prop changes
+	// while the user may be editing. Read-back happens on blur.
+	useEffect(() => {
+		if (divRef.current) {
+			divRef.current.textContent = text;
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []); // intentional empty dep array — mount only
+
 	const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 		const newText = e.currentTarget.textContent ?? "";
 		dispatch({ type: "UPDATE_TEXT", id: noteId, text: newText });
@@ -20,12 +32,11 @@ export function NoteBody({ noteId, text, dispatch }: NoteBodyProps) {
 	return (
 		// biome-ignore lint/a11y/noStaticElementInteractions: contentEditable provides the interactive semantics; this is a deliberate rich-text editor pattern
 		<div
+			ref={divRef}
 			contentEditable
 			suppressContentEditableWarning
 			onBlur={handleBlur}
 			onPointerDown={handlePointerDown}
-			// biome-ignore lint/security/noDangerouslySetInnerHtml: note text is user-entered content, not external untrusted HTML
-			dangerouslySetInnerHTML={{ __html: text }}
 			style={{
 				flex: 1,
 				padding: "6px 8px",
