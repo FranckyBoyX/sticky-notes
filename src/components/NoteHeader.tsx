@@ -7,6 +7,8 @@ interface NoteHeaderProps {
 	noteId: string;
 	noteX: number;
 	noteY: number;
+	noteWidth: number;
+	noteHeight: number;
 	dispatch: React.Dispatch<NoteAction>;
 	trashZoneRef: React.RefObject<HTMLDivElement | null>;
 	onDragStart: () => void;
@@ -17,6 +19,8 @@ export function NoteHeader({
 	noteId,
 	noteX,
 	noteY,
+	noteWidth,
+	noteHeight,
 	dispatch,
 	trashZoneRef,
 	onDragStart,
@@ -24,8 +28,14 @@ export function NoteHeader({
 }: NoteHeaderProps) {
 	const { startDrag } = useDrag({
 		onMove: (dx, dy) => {
-			const x = Math.max(0, Math.min(noteX + dx, window.innerWidth - 100));
-			const y = Math.max(0, noteY + dy);
+			const x = Math.max(
+				0,
+				Math.min(noteX + dx, window.innerWidth - noteWidth),
+			);
+			const y = Math.max(
+				0,
+				Math.min(noteY + dy, window.innerHeight - noteHeight),
+			);
 			dispatch({ type: "MOVE", id: noteId, x, y });
 		},
 		onRelease: (x, y) => {

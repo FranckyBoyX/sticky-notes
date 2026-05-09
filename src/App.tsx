@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Canvas } from "./components/Canvas";
 import { NotepadStack } from "./components/NotepadStack";
 import { TrashZone } from "./components/TrashZone";
@@ -16,6 +16,10 @@ export default function App() {
 
 	const handleDragStart = useCallback(() => setIsDragging(true), []);
 	const handleDragEnd = useCallback(() => setIsDragging(false), []);
+
+	useEffect(() => {
+		document.body.style.userSelect = isDragging ? "none" : "";
+	}, [isDragging]);
 
 	return (
 		<>

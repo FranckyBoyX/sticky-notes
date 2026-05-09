@@ -35,6 +35,8 @@ export function Note({
 				noteId={note.id}
 				noteX={note.x}
 				noteY={note.y}
+				noteWidth={note.width}
+				noteHeight={note.height}
 				dispatch={dispatch}
 				trashZoneRef={trashZoneRef}
 				onDragStart={onDragStart}
