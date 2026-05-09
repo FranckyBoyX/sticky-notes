@@ -1,3 +1,4 @@
+import type React from "react";
 import { useRef, useState } from "react";
 import { useDrag } from "../hooks/useDrag";
 import type { NoteAction } from "../types";
