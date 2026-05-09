@@ -1,8 +1,8 @@
-import type React from "react";
+﻿import type React from "react";
 import { useRef } from "react";
 import { useDrag } from "../hooks/useDrag";
-import styles from "../styles/NoteHeader.module.css";
 import type { NoteAction } from "../types";
+import styles from "./NoteHeader.module.css";
 
 interface NoteHeaderProps {
 	noteId: string;

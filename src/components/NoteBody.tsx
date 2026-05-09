@@ -1,7 +1,7 @@
-import type React from "react";
+﻿import type React from "react";
 import { useEffect, useRef } from "react";
-import styles from "../styles/NoteBody.module.css";
 import type { NoteAction } from "../types";
+import styles from "./NoteBody.module.css";
 
 interface NoteBodyProps {
 	noteId: string;
@@ -12,15 +12,15 @@ interface NoteBodyProps {
 export function NoteBody({ noteId, text, dispatch }: NoteBodyProps) {
 	const divRef = useRef<HTMLDivElement>(null);
 
-	// Set initial content on mount only — do NOT sync on text prop changes
+	// Set initial content on mount only â€” do NOT sync on text prop changes
 	// while the user may be editing. Read-back happens on blur.
-	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional mount-only effect — text is set once so the DOM isn't overwritten while the user types
+	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional mount-only effect â€” text is set once so the DOM isn't overwritten while the user types
 	useEffect(() => {
 		if (divRef.current) {
 			divRef.current.textContent = text;
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []); // intentional empty dep array — mount only
+	}, []); // intentional empty dep array â€” mount only
 
 	const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 		const newText = e.currentTarget.textContent ?? "";

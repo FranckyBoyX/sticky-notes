@@ -1,7 +1,7 @@
-import type React from "react";
+﻿import type React from "react";
 import { useResize } from "../hooks/useResize";
-import styles from "../styles/ResizeHandle.module.css";
 import type { NoteAction } from "../types";
+import styles from "./ResizeHandle.module.css";
 
 interface ResizeHandleProps {
 	noteId: string;

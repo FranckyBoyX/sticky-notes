@@ -1,6 +1,6 @@
-import type React from "react";
-import styles from "../styles/Note.module.css";
+﻿import type React from "react";
 import type { NoteAction, Note as NoteType } from "../types";
+import styles from "./Note.module.css";
 import { NoteBody } from "./NoteBody";
 import { NoteHeader } from "./NoteHeader";
 import { ResizeHandle } from "./ResizeHandle";

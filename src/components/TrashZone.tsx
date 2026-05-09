@@ -1,5 +1,5 @@
-import type React from "react";
-import styles from "../styles/TrashZone.module.css";
+﻿import type React from "react";
+import styles from "./TrashZone.module.css";
 
 interface TrashZoneProps {
 	isActive: boolean;

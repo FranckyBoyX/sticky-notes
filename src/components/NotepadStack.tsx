@@ -1,8 +1,8 @@
-import type React from "react";
+﻿import type React from "react";
 import { useRef, useState } from "react";
 import { useDrag } from "../hooks/useDrag";
-import styles from "../styles/NotepadStack.module.css";
 import type { NoteAction } from "../types";
+import styles from "./NotepadStack.module.css";
 
 interface NotepadStackProps {
 	dispatch: React.Dispatch<NoteAction>;
@@ -96,7 +96,7 @@ export function NotepadStack({
 				className={styles.stack}
 				onPointerDown={handlePointerDown}
 			>
-				{/* Stacked card effect — back cards first */}
+				{/* Stacked card effect â€” back cards first */}
 				<div className={styles.cardBack} />
 				<div className={styles.cardMid} />
 				<div className={styles.cardFront}>Drag to create note</div>

@@ -1,6 +1,6 @@
-import type React from "react";
-import styles from "../styles/Canvas.module.css";
+﻿import type React from "react";
 import type { NoteAction, Note as NoteType } from "../types";
+import styles from "./Canvas.module.css";
 import { Note } from "./Note";
 
 interface CanvasProps {
