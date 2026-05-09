@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
 import type React from "react";
+import { useEffect, useRef } from "react";
 import type { NoteAction } from "../types";
 
 interface NoteBodyProps {
@@ -13,6 +13,7 @@ export function NoteBody({ noteId, text, dispatch }: NoteBodyProps) {
 
 	// Set initial content on mount only — do NOT sync on text prop changes
 	// while the user may be editing. Read-back happens on blur.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional mount-only effect — text is set once so the DOM isn't overwritten while the user types
 	useEffect(() => {
 		if (divRef.current) {
 			divRef.current.textContent = text;
