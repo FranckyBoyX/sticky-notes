@@ -1,3 +1,0 @@
-      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
-       25      23      23       7244  ?         197609 15:21:27 /usr/bin/PS
-       23       1      23       8912  ?         197609 15:21:27 /usr/bin/bash
