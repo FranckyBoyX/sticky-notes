@@ -22,7 +22,7 @@ export function useResize(options: UseResizeOptions): UseResizeResult {
 
 	const startResize = useCallback((e: React.PointerEvent) => {
 		// Capture the pointer so resizing stays smooth even when cursor leaves the element
-		(e.target as Element).setPointerCapture(e.pointerId);
+		(e.currentTarget as Element).setPointerCapture(e.pointerId);
 
 		startPos.current = { x: e.clientX, y: e.clientY };
 		startDims.current = {

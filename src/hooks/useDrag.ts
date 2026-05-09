@@ -20,7 +20,7 @@ export function useDrag(options: UseDragOptions): UseDragResult {
 
 	const startDrag = useCallback((e: React.PointerEvent) => {
 		// Capture the pointer so movement stays smooth even when cursor leaves the element
-		(e.target as Element).setPointerCapture(e.pointerId);
+		(e.currentTarget as Element).setPointerCapture(e.pointerId);
 
 		startPos.current = { x: e.clientX, y: e.clientY };
 		setIsDragging(true);
