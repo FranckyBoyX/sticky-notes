@@ -1,5 +1,6 @@
 import type React from "react";
 import { useDrag } from "../hooks/useDrag";
+import styles from "../styles/NoteHeader.module.css";
 import type { NoteAction } from "../types";
 
 interface NoteHeaderProps {
@@ -51,21 +52,8 @@ export function NoteHeader({
 	};
 
 	return (
-		<div
-			onPointerDown={handlePointerDown}
-			style={{
-				height: 24,
-				background: "rgba(0,0,0,0.12)",
-				cursor: "grab",
-				borderRadius: "4px 4px 0 0",
-				flexShrink: 0,
-				display: "flex",
-				alignItems: "center",
-				paddingLeft: 8,
-				userSelect: "none",
-			}}
-		>
-			<span style={{ fontSize: 11, opacity: 0.6 }}>☰</span>
+		<div className={styles.header} onPointerDown={handlePointerDown}>
+			<span className={styles.icon}>☰</span>
 		</div>
 	);
 }

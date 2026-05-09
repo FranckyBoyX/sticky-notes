@@ -1,5 +1,6 @@
 import type React from "react";
 import { useEffect, useRef } from "react";
+import styles from "../styles/NoteBody.module.css";
 import type { NoteAction } from "../types";
 
 interface NoteBodyProps {
@@ -34,20 +35,11 @@ export function NoteBody({ noteId, text, dispatch }: NoteBodyProps) {
 		// biome-ignore lint/a11y/noStaticElementInteractions: contentEditable provides the interactive semantics; this is a deliberate rich-text editor pattern
 		<div
 			ref={divRef}
+			className={styles.body}
 			contentEditable
 			suppressContentEditableWarning
 			onBlur={handleBlur}
 			onPointerDown={handlePointerDown}
-			style={{
-				flex: 1,
-				padding: "6px 8px",
-				outline: "none",
-				wordBreak: "break-word",
-				overflowY: "auto",
-				cursor: "text",
-				fontSize: 14,
-				lineHeight: 1.4,
-			}}
 		/>
 	);
 }

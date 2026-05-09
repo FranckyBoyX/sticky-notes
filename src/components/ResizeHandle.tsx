@@ -1,5 +1,6 @@
 import type React from "react";
 import { useResize } from "../hooks/useResize";
+import styles from "../styles/ResizeHandle.module.css";
 import type { NoteAction } from "../types";
 
 interface ResizeHandleProps {
@@ -28,31 +29,8 @@ export function ResizeHandle({
 	};
 
 	return (
-		<div
-			onPointerDown={handlePointerDown}
-			style={{
-				position: "absolute",
-				bottom: 0,
-				right: 0,
-				width: 16,
-				height: 16,
-				cursor: "se-resize",
-				background: "transparent",
-				overflow: "hidden",
-			}}
-		>
-			<div
-				style={{
-					width: 0,
-					height: 0,
-					borderStyle: "solid",
-					borderWidth: "0 0 14px 14px",
-					borderColor: "transparent transparent #666 transparent",
-					position: "absolute",
-					bottom: 1,
-					right: 1,
-				}}
-			/>
+		<div className={styles.handle} onPointerDown={handlePointerDown}>
+			<div className={styles.triangle} />
 		</div>
 	);
 }

@@ -1,4 +1,5 @@
 import type React from "react";
+import styles from "../styles/Canvas.module.css";
 import type { NoteAction, Note as NoteType } from "../types";
 import { Note } from "./Note";
 
@@ -20,14 +21,7 @@ export function Canvas({
 	const sortedNotes = [...notes].sort((a, b) => a.zIndex - b.zIndex);
 
 	return (
-		<div
-			style={{
-				position: "relative",
-				width: "100vw",
-				height: "100vh",
-				overflow: "hidden",
-			}}
-		>
+		<div className={styles.canvas}>
 			{sortedNotes.map((note) => (
 				<Note
 					key={note.id}

@@ -1,0 +1,22 @@
+.handle {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 16px;
+	height: 16px;
+	cursor: se-resize;
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 0 0 4px 0;
+	overflow: hidden;
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 0 14px 14px;
+	border-color: transparent transparent #666 transparent;
+	position: absolute;
+	bottom: 1px;
+	right: 1px;
+}

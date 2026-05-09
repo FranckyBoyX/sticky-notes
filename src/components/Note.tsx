@@ -1,4 +1,5 @@
 import type React from "react";
+import styles from "../styles/Note.module.css";
 import type { NoteAction, Note as NoteType } from "../types";
 import { NoteBody } from "./NoteBody";
 import { NoteHeader } from "./NoteHeader";
@@ -21,19 +22,13 @@ export function Note({
 }: NoteProps) {
 	return (
 		<div
+			className={styles.note}
 			style={{
-				position: "absolute",
 				left: note.x,
 				top: note.y,
 				width: note.width,
 				height: note.height,
 				zIndex: note.zIndex,
-				background: "#fff9c4",
-				borderRadius: 4,
-				boxShadow: "2px 2px 8px rgba(0,0,0,0.18)",
-				display: "flex",
-				flexDirection: "column",
-				boxSizing: "border-box",
 			}}
 		>
 			<NoteHeader

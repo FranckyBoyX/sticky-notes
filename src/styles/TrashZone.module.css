@@ -1,0 +1,28 @@
+.zone {
+	position: fixed;
+	bottom: 24px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 120px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	font-size: 32px;
+	transition: all 0.2s ease;
+	z-index: 9999;
+	user-select: none;
+	pointer-events: none;
+}
+
+.inactive {
+	opacity: 0;
+}
+
+.active {
+	opacity: 1;
+	background: rgba(239, 68, 68, 0.15);
+	border: 2px dashed #ef4444;
+	box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}

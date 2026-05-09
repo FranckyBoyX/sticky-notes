@@ -1,0 +1,65 @@
+.stack {
+	position: fixed;
+	top: 24px;
+	left: 24px;
+	width: 200px;
+	height: 150px;
+	cursor: grab;
+	z-index: 10000;
+	user-select: none;
+}
+
+.stack:active {
+	cursor: grabbing;
+}
+
+.cardBack {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	width: 200px;
+	height: 150px;
+	background: #fff176;
+	border-radius: 4px;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cardMid {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 200px;
+	height: 150px;
+	background: #fff59d;
+	border-radius: 4px;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cardFront {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 150px;
+	background: #fff9c4;
+	border-radius: 4px;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.18);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	color: #bbb;
+	font-family: sans-serif;
+}
+
+.ghost {
+	position: fixed;
+	width: 200px;
+	height: 150px;
+	background: #fef08a;
+	border-radius: 4px;
+	opacity: 0.6;
+	pointer-events: none;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 10001;
+}

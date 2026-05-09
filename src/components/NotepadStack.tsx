@@ -1,6 +1,7 @@
 import type React from "react";
 import { useRef, useState } from "react";
 import { useDrag } from "../hooks/useDrag";
+import styles from "../styles/NotepadStack.module.css";
 import type { NoteAction } from "../types";
 
 interface NotepadStackProps {
@@ -92,80 +93,22 @@ export function NotepadStack({
 		<>
 			<div
 				ref={stackRef}
+				className={styles.stack}
 				onPointerDown={handlePointerDown}
-				style={{
-					position: "fixed",
-					top: 24,
-					left: 24,
-					width: 200,
-					height: 150,
-					cursor: "grab",
-					zIndex: 10000,
-					userSelect: "none",
-				}}
 			>
 				{/* Stacked card effect — back cards first */}
-				<div
-					style={{
-						position: "absolute",
-						top: 8,
-						left: 8,
-						width: 200,
-						height: 150,
-						background: "#fff176",
-						borderRadius: 4,
-						boxShadow: "2px 2px 6px rgba(0,0,0,0.15)",
-					}}
-				/>
-				<div
-					style={{
-						position: "absolute",
-						top: 4,
-						left: 4,
-						width: 200,
-						height: 150,
-						background: "#fff59d",
-						borderRadius: 4,
-						boxShadow: "2px 2px 6px rgba(0,0,0,0.15)",
-					}}
-				/>
-				<div
-					style={{
-						position: "absolute",
-						top: 0,
-						left: 0,
-						width: 200,
-						height: 150,
-						background: "#fff9c4",
-						borderRadius: 4,
-						boxShadow: "2px 2px 8px rgba(0,0,0,0.18)",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						fontSize: 13,
-						color: "#bbb",
-						fontFamily: "sans-serif",
-					}}
-				>
-					Drag to create note
-				</div>
+				<div className={styles.cardBack} />
+				<div className={styles.cardMid} />
+				<div className={styles.cardFront}>Drag to create note</div>
 			</div>
 
 			{/* Ghost note rendered fixed so it floats above everything */}
 			{isDragging && ghostPos !== null && (
 				<div
+					className={styles.ghost}
 					style={{
-						position: "fixed",
 						left: ghostPos.x,
 						top: ghostPos.y,
-						width: 200,
-						height: 150,
-						background: "#fff9c4",
-						borderRadius: 4,
-						boxShadow: "2px 2px 8px rgba(0,0,0,0.18)",
-						opacity: 0.7,
-						pointerEvents: "none",
-						zIndex: 10001,
 					}}
 				/>
 			)}
