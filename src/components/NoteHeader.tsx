@@ -1,4 +1,5 @@
 import type React from "react";
+import { useRef } from "react";
 import { useDrag } from "../hooks/useDrag";
 import styles from "../styles/NoteHeader.module.css";
 import type { NoteAction } from "../types";
@@ -26,15 +27,20 @@ export function NoteHeader({
 	onDragStart,
 	onDragEnd,
 }: NoteHeaderProps) {
+	// Capture note position at drag start. useDrag gives cumulative deltas from
+	// pointerdown, so we must add them to the position at drag start — not the
+	// live prop, which updates on every MOVE dispatch and would cause drift.
+	const dragStartPos = useRef({ x: 0, y: 0 });
+
 	const { startDrag } = useDrag({
 		onMove: (dx, dy) => {
 			const x = Math.max(
 				0,
-				Math.min(noteX + dx, window.innerWidth - noteWidth),
+				Math.min(dragStartPos.current.x + dx, window.innerWidth - noteWidth),
 			);
 			const y = Math.max(
 				0,
-				Math.min(noteY + dy, window.innerHeight - noteHeight),
+				Math.min(dragStartPos.current.y + dy, window.innerHeight - noteHeight),
 			);
 			dispatch({ type: "MOVE", id: noteId, x, y });
 		},
@@ -56,6 +62,7 @@ export function NoteHeader({
 	});
 
 	const handlePointerDown = (e: React.PointerEvent) => {
+		dragStartPos.current = { x: noteX, y: noteY };
 		dispatch({ type: "BRING_TO_FRONT", id: noteId });
 		onDragStart();
 		startDrag(e);
